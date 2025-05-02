@@ -1,10 +1,10 @@
 import datetime
-import random
 
 import database
 from swarm import Agent
 from swarm.agents import create_triage_agent
 from swarm.repl import run_demo_loop
+import secrets
 
 
 def refund_item(user_id, item_id):
@@ -59,7 +59,7 @@ def order_item(user_id, product_id):
     """Place an order for a product based on the user ID and product ID.
     Takes as input arguments in the format '{"user_id":"1","product_id":"2"}'"""
     date_of_purchase = datetime.datetime.now()
-    item_id = random.randint(1, 300)
+    item_id = secrets.SystemRandom().randint(1, 300)
 
     conn = database.get_connection()
     cursor = conn.cursor()
